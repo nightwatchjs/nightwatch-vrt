@@ -40,7 +40,7 @@ default: {
             "diff_suffix": "",
             "threshold": 0,
             "prompt": false,
-            "always_save_diff_screenshot": false
+            "updateScreenshots": false
         }
     }
 }
@@ -57,7 +57,7 @@ default: {
 | diff_suffix                 | A string appended to the end of the diff image*                                                                  | ""             |
 | threshold                   | Matching threshold, ranges from `0` to `1`. Smaller values make the comparison more sensitive.                   | 0.0            |
 | prompt                      | If true, the user will be prompted to override baseline screenshot when the recently captured screenshot differs | false          |
-| always_save_diff_screenshot | If true, recently captured screenshots will always override the baseline                                         | false          |
+| updateScreenshots | If true, recently captured screenshots will always override the baseline                                         | false          |
 \* *Only necessary if screenshots are set to reside in the same directory*
 
 #### Nightwatch VRT screenshot path generator
