@@ -1,7 +1,7 @@
 const reporter = require('../lib/reporter');
 module.exports = {
- after(browser) {
-  reporter.publishReport();
- }
+  after(browser) {
+    reporter.publishReport();
+  }
 
-}
+};

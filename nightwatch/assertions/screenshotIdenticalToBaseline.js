@@ -27,11 +27,7 @@ exports.assertion = function screenshotIdenticalToBaseline(
   settings,
   message
 ) {
-  if (elementId === 'body') {
-    elementId = 'body';
-  } else if (elementId.selector) {
-    elementId = elementId.selector;
-  } 
+  
   this.message = message || `Visual regression test results for element <${elementId}>.`;
   this.expected = true;
 
@@ -55,21 +51,7 @@ exports.assertion = function screenshotIdenticalToBaseline(
       })
       .perform((done) => {
         compareWithBaseline(this.api, screenshot, fileName, settings).then((result) => {
-          comparisonResult = result ? result : result.value;
-          if (elementId === 'body') {
-            elementId = 'body';
-          } else if (elementId.selector) {
-            elementId = elementId.selector;
-          } 
-
-          if (result.value === true && result.diff !== result.threshold) {
-            this.message = `The difference between the screenshots for <${elementId}> was ${result.diff} when ${result.threshold} was expected`;
-          } else if (result.value === true && result.diff === result.threshold) {
-            this.message = `The difference between the screenshot and baseline for <${elementId}> is less than 0.01. (Threshold: ${result.threshold} and Diff: ${result.fulldiff}) >`;
-          }
-          done();
-        }, (reject) => {
-          comparisonResult = reject;
+          comparisonResult = result;
           done();
         });
       })
