@@ -8,19 +8,14 @@ Nightwatch VRT extends [nightwatch.js](http://nightwatchjs.org/) with an asserti
 
 ## Configuration
 
-Include the following sections in the `nightwatch` [configuration file](http://nightwatchjs.org/gettingstarted#settings-file)
+Add @nightwatch/vrt as a plugin in `nightwatch` [configuration file](http://nightwatchjs.org/gettingstarted#settings-file)
 
-#### Custom commands and assertions
+####
 
-Register `nightwatch-vrt`'s assertion and commands:
+Register `@nightwatch/vrt`'s assertion and commands:
 
 ```JavaScript
-    custom_commands_path: [
-        'node_modules/@bbc/nightwatch-vrt/commands'
-    ],
-    custom_assertions_path: [
-        'node_modules/@bbc/nightwatch-vrt/assertions'
-    ]
+   plugins: ['@nightwatch/vrt']
 ```
 
 #### Nightwatch VRT custom settings
