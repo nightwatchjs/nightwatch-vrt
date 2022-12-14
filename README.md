@@ -1,26 +1,39 @@
-# Nightwatch VRT
+# @nightwatch/vrt
 
-Nightwatch Visual Regression Testing tools for `nightwatch.js`
+[![Build Status][build-badge]][build]
+[![version][version-badge]][package]
+[![Discord][discord-badge]][discord]
+
+Official Nightwatch Plugin which adds visual regression testing support.
+
+
+
+```
+npm install @nightwatch/vrt
+```
 
 ## Description
 
 Nightwatch VRT extends [nightwatch.js](http://nightwatchjs.org/) with an assertion that captures a screenshot of a DOM element identified by a selector and compares the screenshot against a baseline screenshot. If the baseline screenshot does not exist, it will be created the first time you run the test and the assertion will pass.
 
-## Configuration
+## Usage
+Update your [Nightwatch configuration](https://nightwatchjs.org/guide/configuration/overview.html) and add the plugin to the list:
 
-Add @nightwatch/vrt as a plugin in `nightwatch` [configuration file](http://nightwatchjs.org/gettingstarted#settings-file)
-
-####
-
-Register `@nightwatch/vrt`'s assertion and commands:
-
-```JavaScript
-   plugins: ['@nightwatch/vrt']
+```js
+module.exports = {
+    plugins: ['@nightwatch/vrt']
+    
+    // other nightwath settings...
+}
 ```
+
+
 
 #### Nightwatch VRT custom settings
 
-Then, for global settings, add the `visual_regression_settings` entry to nightwatch's `globals` [`globals`](http://nightwatchjs.org/gettingstarted#test-settings) section
+The `@nightwatch/vrt` plugin comes by default with sensible configuration, but in some scenarios you may need to change some of the config options.
+
+You can change the settings using Nightwatch globals, add the `visual_regression_settings` entry to nightwatch's `globals` [`globals`](http://nightwatchjs.org/gettingstarted#test-settings) section
 
 ```JSON
 default: {
@@ -77,9 +90,11 @@ function generateScreenshotFilePath(nightwatchClient, basePath, fileName) {
 }
 ```
 
-## Usage
+## API Commands
 
 In order to use `nightwatch-vrt`, you only need to invoke the `screenshotIdenticalToBaseline` assertion and pass a css selector for the DOM element to compare. You may also pass a custom filename, `visual_regression_settings` overrides, and a custom log message.
+
+### - assert.screenshotIdenticalToBaseline
 
 | Parameter        | Description                                                                                    |
 |------------------|------------------------------------------------------------------------------------------------|
@@ -90,14 +105,21 @@ In order to use `nightwatch-vrt`, you only need to invoke the `screenshotIdentic
 
 
 ```JavaScript
-module.exports = {
-    'Test Google UI loads correctly': (browser) => {
+describe('VRT demo test', function() {
+    it('Test Google UI loads correctly', function(browser) {
         browser
             .url('https://www.google.co.uk')
             .assert.screenshotIdenticalToBaseline('body',  /* Optional */ 'custom-name', {threshold: 0.5}, 'VRT custom-name complete.')
             .end()
-    }
-}
+    })
+})
 ```
 
 The first time a test is run, a baseline screenshot will be created and stored on disk. You should always register the baseline screenshot in the code repository. Further executions of this test will compare against this baseline.
+
+### Updating baseline screenshots
+
+The first time a test is run, a baseline screenshot will be created and stored on disk. You should always register the baseline screenshot in the code repository. Further executions of this test will compare against this baseline. 
+
+Baseline screenshots can be updated by running test with a CLI flag `--update-screenshots` or using global setting 'updateScreenshots' 
+
