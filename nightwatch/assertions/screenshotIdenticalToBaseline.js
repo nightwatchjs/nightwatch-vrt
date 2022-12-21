@@ -50,7 +50,7 @@ exports.assertion = function screenshotIdenticalToBaseline(
         screenshot = elementScreenshot;
       })
       .perform((done) => {
-        compareWithBaseline(this.api, screenshot, fileName, settings).then((result) => {
+        compareWithBaseline.call(this, this.api, screenshot, fileName, settings).then((result) => {
           comparisonResult = result;
           done();
         });
