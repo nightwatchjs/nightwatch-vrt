@@ -33,25 +33,26 @@ module.exports = {
 
 The `@nightwatch/vrt` plugin comes by default with sensible configuration, but in some scenarios you may need to change some of the config options.
 
-You can change the settings using Nightwatch globals, add the `visual_regression_settings` entry to nightwatch's `globals` [`globals`](http://nightwatchjs.org/gettingstarted#test-settings) section
+You can change the settings using Nightwatch globals, add the `@nightwatch/vrt` entry to Nightwatch config
 
-```JSON
-default: {
-    "globals": {
-        "visual_regression_settings": {
-            "generate_screenshot_path": defaultScreenshotPathGenerator,
-            "latest_screenshots_path": "vrt/latest",
-            "latest_suffix": "",
-            "baseline_screenshots_path": "vrt/baseline",
-            "baseline_suffix": "",
-            "diff_screenshots_path": "vrt/diff",
-            "diff_suffix": "",
-            "threshold": 0,
-            "prompt": false,
-            "updateScreenshots": false
-        }
-    }
+```js
+//nightwatch.conf.js
+
+module.exports: {
+   '@nightwatch/vrt': {
+    'generate_screenshot_path': this.generateScreenshotFilePath,
+    'latest_screenshots_path': 'vrt/latest',
+    'latest_suffix': '',
+    'baseline_screenshots_path': 'vrt/baseline',
+    'baseline_suffix': '',
+    'diff_screenshots_path': 'vrt/diff',
+    'diff_suffix': '',
+    'threshold': 0.01,
+    'prompt': true,
+    'always_save_diff_screenshot': true
+  },
 }
+
 ```
 
 | Property                    | Description                                                                                                      | Defaults       |
