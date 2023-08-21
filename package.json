@@ -1,6 +1,6 @@
 {
     "name": "@nightwatch/vrt",
-    "version": "3.0.0",
+    "version": "3.1.0",
     "description": "Nightwatch Visual Regression Testing tools",
     "license": "MIT",
     "homepage": "https://github.com/nightwatchjs/nightwatch-vrt",
@@ -11,7 +11,7 @@
     "types": "index",
     "engines": {
         "node": ">= 16"
-      },
+    },
     "scripts": {
         "lint": "eslint lib nightwatch",
         "test:dev": "jest --watch --notify",
