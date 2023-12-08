@@ -37,7 +37,8 @@
     "dependencies": {
         "@nightwatch/html-reporter-template": "^0.3.0",
         "jimp": "^0.16.0",
-        "lodash": "^4.17.4"
+        "lodash": "^4.17.4",
+        "open": "^8.4.2"
     },
     "devDependencies": {
         "eslint": "^8.27.0",
