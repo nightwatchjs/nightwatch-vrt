@@ -1,6 +1,6 @@
 {
     "name": "@nightwatch/vrt",
-    "version": "3.1.0",
+    "version": "3.4.0",
     "description": "Nightwatch Visual Regression Testing tools",
     "license": "MIT",
     "homepage": "https://github.com/nightwatchjs/nightwatch-vrt",
@@ -35,14 +35,14 @@
         ]
     },
     "dependencies": {
-        "@nightwatch/html-reporter-template": "^0.2.1",
+        "@nightwatch/html-reporter-template": "^0.3.0",
         "jimp": "^0.16.0",
         "lodash": "^4.17.4"
     },
     "devDependencies": {
         "eslint": "^8.27.0",
         "jest": "^28.1.0",
-        "nightwatch": "^3.0.1",
+        "nightwatch": "^3.4.1",
         "rimraf": "^3.0.0"
     }
 }
